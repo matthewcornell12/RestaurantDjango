@@ -25,6 +25,11 @@ def newaccount(request):
     password = request.POST['password']
     password_conf = request.POST['confirm_password']
 
+    if password != password_conf:
+        return render(request, 'restaurants/signup.html', {
+            'error_message': 'Passwords do not Match',
+        })
+
     new_user = User(first_name = fname, last_name = lname, username = uname, password = password)
     new_user.save()
 
