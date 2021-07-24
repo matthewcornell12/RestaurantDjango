@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<head>
+  Index Test Page
+</head>
+<body>
+  <ul>
+    {% for user in user_list %}
+      <li>{{ user.first_name }}</li>
+    {% endfor %}
+  </ul>
+</body>
