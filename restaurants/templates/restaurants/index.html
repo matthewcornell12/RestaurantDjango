@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <head>
-  Index Test Page
+  Home Page
 </head>
 <body>
-  <ul>
-    {% for user in user_list %}
-      <li>{{ user.first_name }}</li>
-    {% endfor %}
-  </ul>
+  <a href="{% url 'restaurants:signup' %}">Create New Account</a>
+  <a href="{% url 'restaurants:signin' %}">Log In to Your Account</a>
 </body>

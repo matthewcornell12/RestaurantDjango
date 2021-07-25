@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .models import User, Restaurant
 from django.views import generic
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
 # Create your views here.
 class IndexView(generic.ListView):
@@ -34,3 +36,30 @@ def newaccount(request):
     new_user.save()
 
     return HttpResponse("User Succesfully Created")
+
+def signin(request):
+    template = loader.get_template('restaurants/signin.html')
+    context = {}
+    return HttpResponse(template.render(context, request))
+
+def userhome(request):
+    uname = request.POST['username']
+    password = request.POST['password']
+
+    try:
+        user = User.objects.get(pk=uname)
+    except (KeyError, User.DoesNotExist):
+        template = loader.get_template('restaurants/signin.html')
+        context = {
+            'error_message': 'User Does Not Exist',
+        }
+        return HttpResponseRedirect(reverse('restaurants:signin', args=()))
+    else:
+        if password != user.password:
+            template = loader.get_template('restaurants/signin.html')
+            context = {
+                'error_message': 'Password is incorrect',
+            }
+            return HttpResponse(template.render(context, request))
+        else:
+            return HttpResponse(user)
