@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <head>
-  Sign Up Page
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'restaurants/signup.css' %}">
 </head>
 <body>
+  <h1>Create a new Account</h1>
   <form action="{% url 'restaurants:newaccount' %}" method="post">
     {% csrf_token %}
     {% if error_message %}<p><strong>{{ error_message }}</strong></p> {% endif %}
@@ -11,13 +13,13 @@
     <label for="last_name">Last Name:</label><br>
     <input type="text" name="last_name" id="last_name" placeholder="Doe" required><br>
     <label for="username">Username:</label><br>
-    <input type="text" name="username" id="username" placeholder="jdoe123" required><br>
+    <input type="text" name="username" id="username" placeholder="jdoe123" required><br><br>
     <fieldset>
       <label for="password">Password:</label><br>
       <input type="password" name="password" id="password" placeholder="Password" required><br>
       <label for="confirm_password">Confirm Password:</label><br>
       <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" required>
-    </fieldset>
+    </fieldset><br>
     <input type="submit" name="submit" value="Create Account">
   </form>
 </body>

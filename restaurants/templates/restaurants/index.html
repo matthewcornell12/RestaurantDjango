@@ -1,8 +1,16 @@
 <!DOCTYPE html>
 <head>
-  Home Page
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'restaurants/index.css' %}">
 </head>
 <body>
-  <a href="{% url 'restaurants:signup' %}">Create New Account</a>
-  <a href="{% url 'restaurants:signin' %}">Log In to Your Account</a>
+  <h1>Welcome</h1>
+  <div class="formbuttons">
+    <form action="{% url 'restaurants:signup' %}" method="get">
+      <input type="submit" name="SignUp" value="Sign Up">
+    </form>
+    <form action="{% url 'restaurants:signin' %}" method="get">
+      <input type="submit" name="SignIn" value="Sign In">
+    </form>
+  </div>
 </body>
