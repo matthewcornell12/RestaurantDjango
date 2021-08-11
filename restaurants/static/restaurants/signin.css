@@ -1,0 +1,17 @@
+* {
+  	font-family: Arial;
+}
+
+body {
+  background-color: #d9d9cc;
+}
+
+h1 {
+  color: green;
+  text-align: center;
+  background: white url("images/headbanner.jpeg") no-repeat;
+  background-size: cover;
+  height: 75px;
+  line-height: 75px;
+
+}

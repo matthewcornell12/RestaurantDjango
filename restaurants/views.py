@@ -35,7 +35,11 @@ def newaccount(request):
     new_user = User(first_name = fname, last_name = lname, username = uname, password = password)
     new_user.save()
 
-    return HttpResponse("User Succesfully Created")
+    request.session['user'] = new_user.username
+    context = {'user': request.session['user'],}
+    template = loader.get_template('restaurants/userhome.html')
+
+    return HttpResponse(template.render(context, request))
 
 def signin(request):
     template = loader.get_template('restaurants/signin.html')
@@ -45,6 +49,7 @@ def signin(request):
 def userhome(request):
     uname = request.POST['username']
     password = request.POST['password']
+    request.session['user'] = uname
 
     try:
         user = User.objects.get(pk=uname)
@@ -62,4 +67,7 @@ def userhome(request):
             }
             return HttpResponse(template.render(context, request))
         else:
-            return HttpResponse(user)
+            context = {'user': request.session['user'],}
+            template = loader.get_template('restaurants/userhome.html')
+
+            return HttpResponse(template.render(context, request))

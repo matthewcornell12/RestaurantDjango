@@ -1,0 +1,45 @@
+* {
+  	font-family: Arial;
+}
+
+body {
+  background-color: #d9d9cc;
+}
+
+h1 {
+  color: green;
+  text-align: center;
+  background: white url("images/headbanner.jpeg") no-repeat;
+  background-size: cover;
+  height: 75px;
+  line-height: 75px;
+
+}
+
+.dropdown {
+  position: absolute;
+  top: 33px;
+  right: 20px;
+}
+
+.dropbutton {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.userdetails {
+  display: none;
+  position: absolute;
+  background-color: #F1F1F1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  text-align: left;
+}
+
+.dropdown:hover .userdetails {display: block;}
+
+.dropdown:hover .dropbutton {background-color: #3e8e41;}

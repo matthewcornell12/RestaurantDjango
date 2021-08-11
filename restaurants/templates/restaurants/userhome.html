@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'restaurants/userhome.css' %}">
+</head>
+<body>
+  <h1>Home</h1>
+  <div class="dropdown">
+    <button class="dropbutton">{{ user }}</button>
+    <div class="userdetails">
+      <p><strong>{{ user }}</strong></p>
+      <p>Signed In</p>
+    </div>
+  </div>
+</body>

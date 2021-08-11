@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <head>
-  Sign In Page
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'restaurants/signin.css' %}">
 </head>
 <body>
+  <h1>Sign in to Your Account</h1>
   <form action="{% url 'restaurants:userhome' %}" method="post">
     {% csrf_token %}
     {% if error_message %}<p><strong>User Does Not Exist</strong></p> {% endif %}
